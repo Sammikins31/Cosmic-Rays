@@ -158,4 +158,12 @@ function onScreen(v) {
 
 function windowResized() {
     resizeCanvas(windowWidth, windowHeight);
+    
 }
+ function sendHeight() {
+    const height = document.body.scrollHeight;
+    window.parent.postMessage({ iframeHeight: height }, '*');
+  }
+
+  window.addEventListener('load', sendHeight);
+  window.addEventListener('resize', sendHeight);
